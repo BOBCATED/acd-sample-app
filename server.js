@@ -5,7 +5,9 @@ const express = require('express'),
       ObjectId = require('mongodb').ObjectId,
       path = require('path');
 
-const mongodb_url = "mongodb://mguser:password1234@ds119304.mlab.com:19304/quizdb";
+//const mongodb_url = "mongodb://mguser:password1234@ds119304.mlab.com:19304/quizdb";
+const mongodb_url = "mongodb://localhost:27017/quizdb";
+
 console.log(mongodb_url);
 // initialize the express app object
 var app = express();
@@ -22,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', router);
 
-MongoClient.connect(mongodb_url, { useNewUrlParser: true }, function(err, client){
+MongoClient.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client){
     assert.equal(null, err);
     console.log("Connecting to mongodb ....");
     

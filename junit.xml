@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="8" failures="1" time="9.113">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2019-11-12T01:37:28" time="1.464" tests="1">
-    <testcase classname=" adds 1 + 2 to equal 3" name=" adds 1 + 2 to equal 3" time="0.01">
+<testsuites name="jest tests" tests="8" failures="1" time="11.889">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2019-11-19T01:58:52" time="2.55" tests="1">
+    <testcase classname=" adds 1 + 2 to equal 3" name=" adds 1 + 2 to equal 3" time="0.029">
     </testcase>
   </testsuite>
-  <testsuite name="app" errors="0" failures="0" skipped="0" timestamp="2019-11-12T01:37:28" time="2.691" tests="1">
-    <testcase classname="app should display a PopQuiz heading" name="app should display a PopQuiz heading" time="1.236">
+  <testsuite name="app" errors="0" failures="0" skipped="0" timestamp="2019-11-19T01:58:53" time="3.401" tests="1">
+    <testcase classname="app should display a PopQuiz heading" name="app should display a PopQuiz heading" time="1.015">
     </testcase>
   </testsuite>
-  <testsuite name="app" errors="0" failures="1" skipped="0" timestamp="2019-11-12T01:37:28" time="6.923" tests="6">
-    <testcase classname="app should display a PopQuiz heading" name="app should display a PopQuiz heading" time="1.008">
+  <testsuite name="app" errors="0" failures="1" skipped="0" timestamp="2019-11-19T01:58:53" time="8.257" tests="6">
+    <testcase classname="app should display a PopQuiz heading" name="app should display a PopQuiz heading" time="0.711">
     </testcase>
-    <testcase classname="app click manage pop quiz " name="app click manage pop quiz " time="0.111">
+    <testcase classname="app click manage pop quiz " name="app click manage pop quiz " time="0.147">
     </testcase>
-    <testcase classname="app should display first record" name="app should display first record" time="1.671">
+    <testcase classname="app should display first record" name="app should display first record" time="1.815">
     </testcase>
-    <testcase classname="app add a new pop quiz" name="app add a new pop quiz" time="0.634">
+    <testcase classname="app add a new pop quiz" name="app add a new pop quiz" time="0.734">
     </testcase>
-    <testcase classname="app benchmark adding a new pop quiz" name="app benchmark adding a new pop quiz" time="0.864">
+    <testcase classname="app benchmark adding a new pop quiz" name="app benchmark adding a new pop quiz" time="0.951">
       <failure>Error: expect(received).toBeLessThanOrEqual(expected)
 
 Expected: 0.5
-Received: 0.789
+Received: 0.858
     at Object.toBeLessThanOrEqual (/Users/phangty/Projects/acd-sample-app/test/new/appnew.test.js:58:24)
     at process._tickCallback (internal/process/next_tick.js:68:7)</failure>
     </testcase>
-    <testcase classname="app list all pop quizes after adding" name="app list all pop quizes after adding" time="0.663">
+    <testcase classname="app list all pop quizes after adding" name="app list all pop quizes after adding" time="0.924">
     </testcase>
   </testsuite>
 </testsuites>
