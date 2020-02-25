@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express'),
       bodyParser = require('body-parser'),
       MongoClient = require('mongodb').MongoClient,
@@ -6,7 +7,7 @@ const express = require('express'),
       path = require('path');
 
 //const mongodb_url = "mongodb://mguser:password1234@ds119304.mlab.com:19304/quizdb";
-const mongodb_url = "mongodb://localhost:27017/quizdb";
+const mongodb_url = process.env.MONGGO_DB_URL;
 
 console.log(mongodb_url);
 // initialize the express app object
@@ -24,7 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', router);
 
-MongoClient.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client){
+MongoClient.connect(mongodb_url, { useNewUrlParser: true, 
+    useUnifiedTopology: true }, function(err, client){
     assert.equal(null, err);
     console.log("Connecting to mongodb ....");
     
@@ -38,7 +40,7 @@ MongoClient.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: tr
         db = client.db();
     
         quizCollection = db.collection('quiz');
-
+        
         router.post('/newQuiz', function(req, res, next){
             console.log(req.body);
             var newPopQuizForm = req.body;
@@ -78,7 +80,6 @@ MongoClient.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: tr
                 answers: _answers,
                 correctAnswer: req.body.correctAnswer
             } }, (err, result)=>{
-                //console.log(result);
                 res.redirect('/api/list-quizes');
             });
         });
@@ -94,12 +95,12 @@ MongoClient.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: tr
         });
         
         router.get('/quiz/:id', (req,res, next)=>{
-            var _id = req.params.id;
+            let _id = req.params.id;
             console.log("_id" + _id);
-            var oid = new ObjectId(_id)
+            let oid = new ObjectId(_id)
             quizCollection.findOne({_id: oid},(err, result)=>{
                 console.log(JSON.stringify(result));
-                var editQuiz = {
+                let editQuiz = {
                     id: _id,
                     question: result.question,
                     answer1: result.answers[0].value,
@@ -208,6 +209,6 @@ MongoClient.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: tr
     }    
 })
 
-app.listen(3000, function(){
-    console.log("App is running on port " + 3000);
+app.listen(process.env.PORT, function(){
+    console.log(`App is running on port ${process.env.PORT}`);
 })
