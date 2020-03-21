@@ -2,7 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 
 const loadConfig = () => {
     return {
-        mongodb: new MongoClient(process.env.MONGGO_DB_URL, {
+        mongodb: new MongoClient(process.env.MONGO_DB_URL, {
             useNewUrlParser: true, 
             useUnifiedTopology: true })
     }
