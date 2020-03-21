@@ -12,6 +12,21 @@ describe('app', () => {
       await expect(page).toClick('a', { text: 'Manage Pop Quizes' })
     })
 
+    it('add a new pop quiz', async () => {
+      console.log("add new quiz >")
+      await page.goto("http://localhost:3000/api/show-newQuizform")
+      await expect(page).toFillForm('form[name="addNewQuiz"]', {
+        question: 'What colour is Donald Trump\'s hair\?',
+        answer1: 'Gold',
+        answer2: 'Silver',
+        answer3: 'White',
+        answer4: 'Black',
+        correctAnswer: 'White'
+      })
+      await expect(page).toClick('button', { text: 'Submit' });
+      console.log("add new quiz >")
+    })
+
     it('should display first record', async () => {
       await page.goto("http://localhost:3000/api/list-quizes")
       await page.screenshot({path: 'test/screenshots/listofquizes.png'});
